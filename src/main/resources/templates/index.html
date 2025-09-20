@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부동산 추천 서비스</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>부동산 추천 서비스</h1>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <div class="search-filters">
+                    <select id="propertyType">
+                        <option value="">매물 유형</option>
+                        <option value="아파트">아파트</option>
+                        <option value="원룸">원룸</option>
+                        <option value="투룸">투룸</option>
+                        <option value="오피스텔">오피스텔</option>
+                    </select>
+
+                    <input type="number" id="minPrice" placeholder="최소 가격 (만원)">
+                    <input type="number" id="maxPrice" placeholder="최대 가격 (만원)">
+
+                    <button id="searchBtn">검색</button>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="map-container">
+                    <div id="map" style="width:100%; height:500px;"></div>
+                </div>
+
+                <div class="property-list">
+                    <h3>매물 목록</h3>
+                    <div id="propertyList" class="property-items">
+                        <!-- 매물 목록이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 카카오 지도 API -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=your_kakao_map_api_key_here"></script>
+    <script src="/js/map.js"></script>
+    <script src="/js/property.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

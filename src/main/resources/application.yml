@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: real_estate_recommend
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    # MySQL settings (for production)
+    # url: jdbc:mysql://localhost:3306/real_estate_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+    # username: ${DB_USERNAME:root}
+    # password: ${DB_PASSWORD:password}
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+  servlet:
+    multipart:
+          max-file-size: 10MB
+          max-request-size: 50MB
+          enabled: true
+
+server:
+  port: 8888
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    com.myhome.real_estate_recommend: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# 카카오 지도 API 설정
+kakao:
+  map:
+    api-key: ${KAKAO_MAP_API_KEY:671a6d7a50f2e2ddc1287ccee322f944}
+
+# 파일 업로드 설정
+file:
+  upload:
+    path: ${FILE_UPLOAD_PATH:./uploads}
+
+# JWT 설정
+jwt:
+  secret: ${JWT_SECRET:mySecretKey123456789012345678901234567890}
+  expiration: ${JWT_EXPIRATION:86400000}
